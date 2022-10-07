@@ -4,5 +4,37 @@
 }
 
 body {
-    background-color: aqua;
+    background-color: #1A1A1B;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#container {
+   
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+   
+}
+
+.book-display {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    height: 150px;
+    width: 300px;
+    border-radius: 20px;
+}
+
+#header {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    
+    padding: 50px;
+    color: white;
+    font-size: 5em;
 }
