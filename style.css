@@ -14,19 +14,18 @@ body {
    
     height: 100%;
     width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    color: black;
+    background-color: white;
    
 }
 
-.book-display {
-    margin: 20px;
-    padding: 20px;
-    background-color: white;
-    height: 150px;
-    width: 300px;
-    border-radius: 20px;
+table, th, td {
+    margin-top: 50px;
+    border: 1px solid black;
+}
+
+td {
+    padding: 10px 100px 10px 10px;
 }
 
 #header {
