@@ -37,3 +37,25 @@ td {
     color: white;
     font-size: 5em;
 }
+
+.new-book {
+    background-color: green;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.new-book:hover {
+    background-color: rgb(102, 134, 102);
+}
+
+form {
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+input {
+    display: block;
+    margin-bottom: 5px;
+}
