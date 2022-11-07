@@ -1,4 +1,15 @@
-let myLibrary = [];
+let myLibrary = [
+    {
+        "title": "Harry Potter",
+        "author": "J.K. Rowling"
+    },
+
+    {
+        "title": "Narnia",
+        "author": "C.S. Lewis"
+    }
+];
+
 
 
 function Book(name, author) {//, pages, readStatus) {
@@ -29,12 +40,29 @@ function createForm() {
     titleInput.setAttribute("required", "")
     let submitButton = document.createElement('button');
     submitButton.setAttribute("type", "submit");
-    submitButton.textContent = "Confirm";
+    submitButton.textContent = "Add Book";
 
     form.appendChild(titleLabel);
     form.appendChild(titleInput);
     form.appendChild(submitButton);
     container.appendChild(form);
+}
+
+// function that displays all the books in the array, myLibrary
+function displayBooks() {
+    let table = document.querySelector('.table-books');
+    for(let i = 0; i < myLibrary.length; i++)
+    {
+        let newBook = document.createElement('tr');
+        let title = document.createElement('td');
+        title.textContent = myLibrary[i]['title'];
+        let author = document.createElement('td');
+        author.textContent = myLibrary[i]['author'];
+        newBook.appendChild(title);
+        newBook.appendChild(author);
+        table.appendChild(newBook);
+    }
+
 }
 
 // event listener for button to bring up form to put info for
@@ -43,4 +71,5 @@ function createForm() {
 const nButton = document.querySelector('.new-book');
 nButton.addEventListener('click', () => {
     createForm();
+    displayBooks();
 });
