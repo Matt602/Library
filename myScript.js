@@ -16,7 +16,11 @@ function addBookToLibrary(event) {
     let title = document.getElementById('title').value;
     let b = new Book(title);
     myLibrary.push(b);
+    deleteForm();
+    clearTable();
     displayBooks();
+    let hello = JSON.stringify(myLibrary);
+    console.log(hello);
     //console.log(title);
 }
 
@@ -45,12 +49,22 @@ function createForm() {
     container.appendChild(form);
 }
 
+function deleteForm() {
+    const form = document.querySelector('#myForm');
+    form.remove();
+}
+
+function clearTable() {
+    document.querySelectorAll('.bookData').forEach(e => e.remove());
+}
+
 // function that displays all the books in the array, myLibrary
 function displayBooks() {
     let table = document.querySelector('.table-books');
     for(let i = 0; i < myLibrary.length; i++)
     {
         let newBook = document.createElement('tr');
+        newBook.setAttribute("class", "bookData");
         let title = document.createElement('td');
         title.textContent = myLibrary[i]['title'];
         //let author = document.createElement('td');
