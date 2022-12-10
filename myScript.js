@@ -1,13 +1,12 @@
 let myLibrary = [];
 
 
-
-function Book(name, author, readStatus) {//, pages, readStatus) {
+function Book(name, author, readStatus, index) {//, pages, readStatus) {
     this.title = name;
     this.author = author;
     //this.pages = pages;
     this.readStatus = readStatus;
-    //this.index = myLibrary.length;
+    this.index = index;
 }
 
 
@@ -16,7 +15,8 @@ function addBookToLibrary(event) {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let readStatus = 'no';
-    let b = new Book(title, author, readStatus);
+    let bookIndex = myLibrary.length + 1;
+    let b = new Book(title, author, readStatus, bookIndex);
     myLibrary.push(b);
     deleteForm();
     clearTable();
@@ -83,6 +83,9 @@ function displayBooks() {
     {
         let newBook = document.createElement('tr');
         newBook.setAttribute("class", "bookData");
+        let bIndex = document.createElement('td');
+        bIndex.textContent = myLibrary[i]['index'];
+        console.log(myLibrary[i]['index']);
         let title = document.createElement('td');
         title.textContent = myLibrary[i]['title'];
         let author = document.createElement('td');
@@ -98,6 +101,7 @@ function displayBooks() {
 
 
 
+        newBook.appendChild(bIndex);
         newBook.appendChild(title);
         newBook.appendChild(author);
         newBook.appendChild(readStatus);
