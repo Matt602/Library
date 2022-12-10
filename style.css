@@ -51,6 +51,11 @@ td {
     background-color: rgb(102, 134, 102);
 }
 
+.deleteButton {
+    height: 20px;
+    width: 100px;
+}
+
 form {
     margin-top: 40px;
     margin-left: 40px;

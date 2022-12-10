@@ -76,6 +76,14 @@ function clearTable() {
     document.querySelectorAll('.bookData').forEach(e => e.remove());
 }
 
+function reassignIndex() {
+
+    for(let i = 0; i < myLibrary.length; i++) 
+    {
+        myLibrary[i]['index'] = i + 1;
+    }
+}
+
 // function that displays all the books in the array, myLibrary
 function displayBooks() {
     let table = document.querySelector('.table-books');
@@ -95,9 +103,20 @@ function displayBooks() {
         sub.innerHTML = myLibrary[i]['readStatus'];
         readStatus.appendChild(sub);
 
-        
-        
+        let newButton = document.createElement('td')
+        let dButton = document.createElement('button');
+        dButton.setAttribute('class', 'deleteButton');
+        dButton.textContent = 'Delete?'
 
+        dButton.addEventListener('click', () => {
+            myLibrary.splice(parseInt(myLibrary[i]['index']) - 1, 1);
+            reassignIndex();
+            clearTable();
+            displayBooks();
+        });
+
+        newButton.appendChild(dButton);
+        
 
 
 
@@ -105,6 +124,7 @@ function displayBooks() {
         newBook.appendChild(title);
         newBook.appendChild(author);
         newBook.appendChild(readStatus);
+        newBook.appendChild(newButton);
         table.appendChild(newBook);
     }
 
