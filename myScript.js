@@ -1,6 +1,21 @@
 let myLibrary = [];
 
 
+function Changestatus() {
+
+}
+
+Changestatus.prototype.switchStatus = function(i) {
+    if(myLibrary[i]['readStatus'] === 'No')
+    {
+        myLibrary[i]['readStatus'] = 'Yes';
+    }
+    else
+    {
+        myLibrary[i]['readStatus'] = 'No';
+    }
+}
+
 function Book(name, author, readStatus, index) {//, pages, readStatus) {
     this.title = name;
     this.author = author;
@@ -9,12 +24,13 @@ function Book(name, author, readStatus, index) {//, pages, readStatus) {
     this.index = index;
 }
 
+Book.prototype = Object.create(Changestatus.prototype);
 
 function addBookToLibrary(event) {
     event.preventDefault();
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
-    let readStatus = 'no';
+    let readStatus = 'No';
     let bookIndex = myLibrary.length + 1;
     let b = new Book(title, author, readStatus, bookIndex);
     myLibrary.push(b);
@@ -103,6 +119,18 @@ function displayBooks() {
         sub.innerHTML = myLibrary[i]['readStatus'];
         readStatus.appendChild(sub);
 
+        let newStatusButton = document.createElement('td');
+        let sButton = document.createElement('button');
+        sButton.textContent = 'Change Status?';
+
+        sButton.addEventListener('click', () => {
+            myLibrary[i].switchStatus(i);
+            clearTable();
+            displayBooks();
+        });
+
+        newStatusButton.appendChild(sButton);
+
         let newButton = document.createElement('td')
         let dButton = document.createElement('button');
         dButton.setAttribute('class', 'deleteButton');
@@ -124,6 +152,7 @@ function displayBooks() {
         newBook.appendChild(title);
         newBook.appendChild(author);
         newBook.appendChild(readStatus);
+        newBook.appendChild(newStatusButton);
         newBook.appendChild(newButton);
         table.appendChild(newBook);
     }
